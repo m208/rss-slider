@@ -1,0 +1,105 @@
+body {
+    background-color: #25282a;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.slider {
+    width: 44em;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1em;
+}
+
+.slides {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+}
+
+.slide {
+    margin-right: 3em;
+}
+
+.slide img {
+    max-width: 44em;
+    border-radius: 0.5em;
+}
+
+.descr {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    height: 4em;
+}
+
+.descr>p {
+    max-width: 31em;
+    text-align: left;
+    color: #fff;
+    font-size: 1em;
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+
+    margin-top: -4em;
+}
+
+.controls {
+    height: 4em;
+    display: flex;
+}
+
+.labels {
+    display: flex;
+}
+
+.dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin: 0 0.3rem;
+    padding: 0 0.3rem;
+    cursor: pointer;
+}
+
+.dots>span {
+    background-color: #71abfe;
+    border-radius: 50%;
+    border: 0.125em solid #71abfe;
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.dots:hover>span {
+    background-color: #fff;
+    border: 0.125em solid #fff;
+}
+
+
+#r1:checked~.controls-wrapper>.controls>.labels>#d1>span,
+#r2:checked~.controls-wrapper>.controls>.labels>#d2>span,
+#r3:checked~.controls-wrapper>.controls>.labels>#d3>span,
+#r4:checked~.controls-wrapper>.controls>.labels>#d4>span {
+    background-color: transparent;
+}
+
+#r1:checked~.controls-wrapper>.controls>.labels>#d1:hover>span,
+#r2:checked~.controls-wrapper>.controls>.labels>#d2:hover>span,
+#r3:checked~.controls-wrapper>.controls>.labels>#d3:hover>span,
+#r4:checked~.controls-wrapper>.controls>.labels>#d4:hover>span {
+    background-color: transparent;
+}
+
+input {
+    transform: scale(0);
+}
