@@ -100,6 +100,28 @@ body {
     background-color: transparent;
 }
 
+#r1:checked~.slides>#s1,
+#r2:checked~.slides>#s2,
+#r3:checked~.slides>#s3,
+#r4:checked~.slides>#s4 {
+    order: -1;
+    animation-duration: 0.2s;
+    animation-name: slidein;
+
+}
+
 input {
     transform: scale(0);
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
 }
