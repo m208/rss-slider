@@ -125,3 +125,28 @@ input {
         width: 100%;
     }
 }
+
+@media only screen and (max-width: 767px) {
+    .slider {
+        width: 31em;
+    }
+
+    .slide img {
+        max-width: 31em;
+    }
+
+    .descr {
+        margin-top: 3em;
+        justify-content: start;
+        height: 5em;
+    }
+
+    .descr>p {
+        width: 100%;
+    }
+
+    .controls-wrapper {
+        margin-top: -8em;
+        align-items: center;
+    }
+}
