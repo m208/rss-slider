@@ -13,54 +13,11 @@ body {
     padding: 1em;
 }
 
-.slides {
-    display: flex;
-    flex-direction: column;
-    gap: 20em;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    overflow-y: hidden;
-    height: 32em;
-}
-
-.slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    width: 100%;
-    height: 32em;
-}
-
-.slide img {
-    width: 100%;
-    max-height: 27em;
-    border-radius: 0.5em;
-    margin-bottom: 1em;
-}
-
-.descr {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 100%;
-    height: 4em;
-    padding-left: 0.25em;
-}
-
-.descr>p {
-    max-width: 36em;
-    text-align: left;
-    color: #fff;
-    font-size: 1em;
-}
-
 .controls-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    justify-content: space-between;
-    margin-top: -4em;
+    align-items: flex-end;
+    padding-right: 0.5em;
 }
 
 .controls {
@@ -82,7 +39,7 @@ body {
     cursor: pointer;
 }
 
-.dots>span {
+.dots span {
     background-color: #71abfe;
     border-radius: 50%;
     border: 0.125em solid #71abfe;
@@ -90,72 +47,125 @@ body {
     height: 0.5em;
 }
 
-.dots:hover>span {
+.dots:hover span {
     background-color: #fff;
     border: 0.125em solid #fff;
 }
 
 
-#r1:checked~.controls-wrapper>.controls>.labels>#d1>span,
-#r2:checked~.controls-wrapper>.controls>.labels>#d2>span,
-#r3:checked~.controls-wrapper>.controls>.labels>#d3>span,
-#r4:checked~.controls-wrapper>.controls>.labels>#d4>span {
+#r1:checked~.grid-container>.controls-wrapper>.controls>.labels>#d1>span,
+#r2:checked~.grid-container>.controls-wrapper>.controls>.labels>#d2>span,
+#r3:checked~.grid-container>.controls-wrapper>.controls>.labels>#d3>span,
+#r4:checked~.grid-container>.controls-wrapper>.controls>.labels>#d4>span {
     background-color: transparent;
 }
 
-#r1:checked~.controls-wrapper>.controls>.labels>#d1:hover>span,
-#r2:checked~.controls-wrapper>.controls>.labels>#d2:hover>span,
-#r3:checked~.controls-wrapper>.controls>.labels>#d3:hover>span,
-#r4:checked~.controls-wrapper>.controls>.labels>#d4:hover>span {
-    background-color: transparent;
+#r1:checked~.grid-container>.images>#s1,
+#r2:checked~.grid-container>.images>#s2,
+#r3:checked~.grid-container>.images>#s3,
+#r4:checked~.grid-container>.images>#s4 {
+    width: 100%;
+    animation-duration: 0.3s;
+    animation-name: slide-in;
+
 }
 
-#r1:checked~.slides>#s1,
-#r2:checked~.slides>#s2,
-#r3:checked~.slides>#s3,
-#r4:checked~.slides>#s4 {
+#r1:checked~.grid-container>.texts>#t1,
+#r2:checked~.grid-container>.texts>#t2,
+#r3:checked~.grid-container>.texts>#t3,
+#r4:checked~.grid-container>.texts>#t4 {
     order: -1;
-    animation-duration: 0.2s;
-    animation-name: slidein;
+    animation-duration: 0.3s;
+    animation-name: slide-out;
 }
 
 input {
     transform: scale(0);
 }
 
-@keyframes slidein {
+@keyframes slide-out {
     from {
-        margin-left: 100%;
-        width: 300%;
+        transform: translateX(-100%);
     }
 
     to {
-        margin-left: 0%;
-        width: 100%;
+        transform: translateX(0%);
     }
 }
 
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-gap: 0.5em;
+    padding: 0.5em;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50em;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-height: 4em;
+    padding-left: 0.5em;
+    color: aliceblue;
+    text-align: left;
+}
+
+.texts span {
+    width: 100%;
+}
+
+.images {
+    grid-column-start: span 2;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.slide {
+    width: 0;
+    height: 100%;
+}
+
+img {
+    max-height: 27em;
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+/*      --- MEDIA   ---      */
+
 @media only screen and (max-width: 767px) {
-    .slider {
-        max-width: 42em;
-    }
-
-    .slide img {
-        max-width: 42em;
-    }
-
-    .descr {
-        margin-top: 3em;
-        justify-content: start;
-        height: 5em;
-    }
-
-    .descr>p {
-        width: 100%;
+    .images-line {
+        order: 1;
     }
 
     .controls-wrapper {
-        margin-top: -8em;
-        align-items: center;
+        grid-column-start: span 2;
+        align-items: center !important;
+        order: 2;
+    }
+
+    .texts {
+        order: 3;
+        grid-column-start: span 2;
+        max-height: 10em !important;
     }
 }
