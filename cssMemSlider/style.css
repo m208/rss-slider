@@ -52,6 +52,11 @@ body {
     border: 0.125em solid #fff;
 }
 
+.dots:active span {
+    animation-duration: 0.3s;
+    animation-name: jump;
+}
+
 
 #r1:checked~.grid-container>.controls-wrapper>.controls>.labels>#d1>span,
 #r2:checked~.grid-container>.controls-wrapper>.controls>.labels>#d2>span,
@@ -81,6 +86,16 @@ body {
 
 input {
     transform: scale(0);
+}
+
+@keyframes jump {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-0.5em);
+    }
 }
 
 @keyframes slide-out {
